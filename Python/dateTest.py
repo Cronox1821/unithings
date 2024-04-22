@@ -4,9 +4,9 @@ def dateSort(date):
     day = int(date[0:2])
     return year,month,day
 
-dateA = "08012004"
+dateA = "31122004"
 yearA, monthA, dayA = dateSort(dateA) 
 
-dateSort(dateA)
+#dateSort(dateA)
 
 print(monthA,dayA,yearA, sep='/')
