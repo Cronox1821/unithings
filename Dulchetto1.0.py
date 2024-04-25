@@ -1,3 +1,5 @@
+# Autor: Fabian Gabriel Maulen Maulen
+# Dulchetto
 import os
 import random
 import time
@@ -43,7 +45,7 @@ def CCTIT():
 def CCFECAD():
     fechaCad = input("Ingrese fecha de caducidad incluyendo el caracter especial '-' (AAAA-MM): ")
     if '-' in fechaCad:
-        year, month = map(int, fechaCad.split('-'))
+        _, month = map(int, fechaCad.split('-'))
         if not 1 < month <= 12 or  len(fechaCad) != 7:
             raise ValueError('Fecha invalida')
         fechaIso = datetime.strptime(fechaCad, "%Y-%m").date()
