@@ -2,7 +2,7 @@ import os
 import time
 
 hour = 9
-minute = 59
+minute = 58
 second = 57
 
 while hour <= 23:
