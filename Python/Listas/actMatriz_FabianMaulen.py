@@ -1,3 +1,5 @@
+#Autor: Fabian Gabriel Maulen Maulen
+
 import os
 import time
 
