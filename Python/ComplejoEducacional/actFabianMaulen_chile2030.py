@@ -1,5 +1,7 @@
 # Autor: Fabian Gabriel Maulen Maulen
+import pandas as pd
 from math import trunc
+from os import system
 import re
 from collections import Counter
 
@@ -24,7 +26,7 @@ def calcularRut(rut):
         digito_verificador = '0'
     else:
         digito_verificador = str(temp)
-    if digito_verificador == rut[-1]:
+    if digito_verificador == rut[-1].upper():
         return True
     else:
         return False
@@ -51,32 +53,37 @@ direcciones = []
 telefonos = []
 ruts = []
 dir_pattern = "[A-Za-z]+ +[0-9]"
-add = 'n'
+add = 's'
 while add != 'n':
     try:
         while True:
-            nombres.apend((input('Ingrese nombre(s) del alumno: ')) )
-            if len(nombres[-1]) == 0:
+            system("cls")
+            nom = input('Ingrese nombre(s) del alumno: ')
+            if len(nom) == 0:
                 print('El nombre no puede estar vacio, intente nuevamente')
-                del nombres[-1]
             else:
+                nombres.append(nom)
                 break
         while True:
-            apellidos.append((input('Ingrese apellido(s) del alumno: ')))
-            if len(apellidos[-1]) == 0:
+            system("cls")
+            app = input('Ingrese apellido(s) del alumno: ')
+            if len(app) == 0:
                 print('La entrada de apellidos no puede ser vacia, intente nuevamente')
-                del apellidos[-1]
             else:
+                apellidos.append(app)
                 break
 
         while True:
-                direcciones.append(input('Ingrese la direccion del alumno: '))
-                if re.search(dir_pattern,direcciones[-1]):
+                system("cls")
+                direcc = input('Ingrese la direccion del alumno: ')
+                if re.search(dir_pattern,direcc):
+                    direcciones.append(direcc)
                     break
                 else:
                     print('Direccion invalida, asegurese de haber ingresado la direccion en formato [Direccion][Numero]')
 
         while True:
+            system("cls")
             num = input('Ingrese numero de telefono del alumno: ')
             if not verificarRepeticion(num):
                 if len(num) != 8:
@@ -87,7 +94,6 @@ while add != 'n':
                     print('Numero invalido, intente nuevamente')
                 else:
                     telefonos.append(num)
-                    print('Numero agregado')
                     break
             else:
                 print('El numero no existe, intente nuevamente')
@@ -95,6 +101,7 @@ while add != 'n':
             
         while True:
             try:
+                system("cls")
                 rut = input('Ingrese rut sin puntos y sin guion: ')
                 if 8 <= len(rut) <= 9 and not '-' in rut:
                     if calcularRut(rut):
@@ -108,6 +115,7 @@ while add != 'n':
                 print('Entrada invalida, caracter detectado en el rut, intente nuevamente.')
 
         while True:
+            system("cls")
             add = input('Desea agregar otro alumno (s/n): ')
             if add.lower() == "s" or add.lower() == "n":
                 break
@@ -117,29 +125,13 @@ while add != 'n':
     except:
         pass
 
-nombres = [*range(1,7)]
-direcciones = [*range(7,13)]
-apellidos = [*range(13,19)]
-telefonos = [*range(19,26)]
-ruts = [*range(26,33)]
-
-print(nombres)
-print(direcciones)
-print(apellidos)
-print(telefonos)
-print(ruts)
-print(len(nombres))
-print(len(direcciones))
-
-print('{:<0}'.format('Rut'),end='----')
-print('{:<5}'.format('Nombre(s)'),end='----')
-print('{:<5}'.format('Apellidos'),end='----')
-print('{:<5}'.format('Telefono'),end='----')
-print('{:<5}'.format('Direccion'))
-for pos in range(len(nombres)):
-    print('{:<0}'.format(ruts[pos]),end='----')
-    print('{:<5}'.format(nombres[pos]),end='----')
-    print('{:<5}'.format(apellidos[pos]),end='----')
-    print('{:<5}'.format(telefonos[pos]),end='----')
-    print('{:<5}'.format(direcciones[pos]))
-    #print(f'Nombre: {nombres[pos]}\nDireccion: {direcciones[pos]}\nTelefono: {telefonos[pos]}\nRut: {ruts[pos]}\n')
+system("cls")
+data_dict = {
+    'Nombre': nombres,
+    'Apellido': apellidos,
+    'Direccion': direcciones,
+    'Telefono': telefonos,
+    'Rut': ruts
+}
+df = pd.DataFrame(data_dict)
+print(df.set_index('Rut'))
