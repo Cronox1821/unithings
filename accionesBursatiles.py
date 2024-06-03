@@ -1,3 +1,5 @@
+# Agregar linea de nombre para activida colaborativa con github
+# Fabian Maulen
 import random
 
 import matplotlib.pyplot as plt
