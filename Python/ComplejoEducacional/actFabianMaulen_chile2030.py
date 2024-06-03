@@ -125,6 +125,7 @@ while add != 'n':
     except:
         pass
 
+<<<<<<< HEAD
 system("cls")
 data_dict = {
     'Nombre': nombres,
@@ -135,3 +136,31 @@ data_dict = {
 }
 df = pd.DataFrame(data_dict)
 print(df.set_index('Rut'))
+=======
+nombres = [*range(1,7)]
+direcciones = [*range(7,13)]
+apellidos = [*range(13,19)]
+telefonos = [*range(19,26)]
+ruts = [*range(26,33)]
+
+print(nombres)
+print(direcciones)
+print(apellidos)
+print(telefonos)
+print(ruts)
+print(len(nombres))
+print(len(direcciones))
+
+print('{:<0}'.format('Rut'),end='----')
+print('{:<5}'.format('Nombre(s)'),end='----')
+print('{:<5}'.format('Apellidos'),end='----')
+print('{:<5}'.format('Telefono'),end='----')
+print('{:<5}'.format('Direccion'))
+for pos in range(len(nombres)):
+    print('{:<0}'.format(ruts[pos]),end='----')
+    print('{:<5}'.format(nombres[pos]),end='----')
+    print('{:<5}'.format(apellidos[pos]),end='----')
+    print('{:<5}'.format(telefonos[pos]),end='----')
+    print('{:<5}'.format(direcciones[pos]))
+    #print(f'Nombre: {nombres[pos]}\nDireccion: {direcciones[pos]}\nTelefono: {telefonos[pos]}\nRut: {ruts[pos]}\n')
+>>>>>>> eb9dceda55bc6fcb2804cbe987ce2a9a64aaa081
