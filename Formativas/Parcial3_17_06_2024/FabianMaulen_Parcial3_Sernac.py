@@ -1,3 +1,12 @@
+""""
+ Autor: Fabian Gabriel Maulen Maulen
+ 17-06-2024
+ Seccion 001
+ Menu sernac, con respaldo en csv de archivos
+
+ Requiere libreria tabulate (Igual corre sin tabulate, solo se termina antes jejeje)
+
+"""
 import csv
 import math
 try:
